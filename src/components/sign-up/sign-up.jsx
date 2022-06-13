@@ -8,6 +8,8 @@ import {
   createUserDocumentFromAuth,
 } from '../../utilities/firebase/Firebase';
 
+
+
 import './sign-up.scss';
 
 const defaultFormFields = {
@@ -20,6 +22,7 @@ const defaultFormFields = {
 const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -40,7 +43,7 @@ const SignUp = () => {
       );
 
       await createUserDocumentFromAuth(user, { displayName });
-      resetFormFields();
+      resetFormFields(); 
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         alert('Cannot create user, email already in use');
