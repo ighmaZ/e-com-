@@ -3,13 +3,9 @@
   import Home from "./routes/home/Home";
   import NavBar from "./routes/NavBar/NavBar";
   import Authentication from './routes/authentication/authentication';
+  import Shop from './routes/shop/shop';
 
 
-  const Shop = () => {
-    return (
-    <h1> its shop page babe!</h1>
-    )
-  }
   
   const App = () => {
   
