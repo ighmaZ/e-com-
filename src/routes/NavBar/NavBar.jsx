@@ -8,7 +8,9 @@
 
  import { signOutUser } from '../../utilities/firebase/Firebase'
 
- import  "./NavBar.scss"
+import { NavigationContainer , NavLinks , NavLink , LogoContainer } from './NavBar.styles'
+
+
 const NavBar = () => {
 
   const { currentUser} = useContext(UserContext);
@@ -16,33 +18,29 @@ const NavBar = () => {
  
 
   console.log(currentUser);
-    return (
-      <Fragment>
-        <div className='NavBar'>
-          <Link className='logo-container' to="/">
-<CrwnLogo className='logo'/>
-          </Link>
-<div className='nav-links-container'>
-  <Link className='nav-link' to ='/Shop'>
-     SHOP
-     </ Link>
-     {
-       currentUser ? (
+  return (
+    <Fragment>
+      <NavigationContainer>
+        <LogoContainer to='/'>
+          <CrwnLogo />
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to='/shop'>SHOP</NavLink>
 
-        <span className='nav-link' onClick={signOutUser}> SIGN OUT</span>)
-        
-        : ( <Link className='nav-link' to ='/auth'>
-          Sign-in
-          </ Link>
-        
-        )}
-<CartIcon/>
-       </div>
-       {isCartOpen && <CartDropdown/>}
-        </div>
-      < Outlet />
-      </Fragment>
-    )
-  }
+          {currentUser ? (
+            <NavLink as='span' onClick={signOutUser}>
+              SIGN OUT
+            </NavLink>
+          ) : (
+            <NavLink to='/auth'>SIGN IN</NavLink>
+          )}
+          <CartIcon />
+        </NavLinks>
+        {isCartOpen && <CartDropdown />}
+      </NavigationContainer>
+      <Outlet />
+    </Fragment>
+  );
+};
 
-  export default NavBar;
+export default NavBar;

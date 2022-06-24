@@ -1,4 +1,4 @@
-import CategoryItem from "../category-item/category-item.component";
+import DirectoryItem from "../directory-item/directory-item.component";
 
 import './directory.scss';
 
@@ -10,7 +10,7 @@ import React from 'react'
 {
   
   categories.map( (category) => (
-  <CategoryItem Key ={category.id} category ={category} />
+  <DirectoryItem Key ={category.id} category ={category} />
 
    ) )
 }
